@@ -252,7 +252,7 @@ class Evaluator:
     # Evaluation Number 1_1
     ##############################################################
     def eval_number_1_1(self, df):
-        print(df.head())
+        print("eval_number_1_1 start!!")
 
         user_id_list = []
         user_answer_list = []
@@ -300,7 +300,7 @@ class Evaluator:
     # Evaluation Number 1_2
     ##############################################################
     def eval_number_1_2(self, df):
-        print(df.head())
+        print("eval_number_1_2 start!!")
 
         user_id_list = []
         user_answer_list = []
@@ -348,7 +348,7 @@ class Evaluator:
     # Evaluation Number 2_1
     ##############################################################
     def eval_number_2_1(self, df):
-        print(df.head())
+        print("eval_number_2_1 start!!")
 
         user_id_list = []
         user_answer_list = []
@@ -396,7 +396,7 @@ class Evaluator:
     # Evaluation Number 2_2
     ##############################################################
     def eval_number_2_2(self, df):
-        print(df.head())
+        print("eval_number_2_2 start!!")
 
         user_id_list = []
         user_answer_list = []
@@ -444,7 +444,7 @@ class Evaluator:
     # Evaluation Number 2_3
     ##############################################################
     def eval_number_2_3(self, df):
-        print(df.head())
+        print("eval_number_2_3 start!!")
 
         user_id_list = []
         user_answer_list = []
@@ -493,7 +493,7 @@ class Evaluator:
     # Evaluation Number 3_1
     ##############################################################
     def eval_number_3_1(self, df):
-        print(df.head())
+        print("eval_number_3_1 start!!")
 
         user_id_list = []
         user_answer_list = []
@@ -541,7 +541,7 @@ class Evaluator:
     # Evaluation Number 3_2
     ##############################################################
     def eval_number_3_2(self, df):
-        print(df.head())
+        print("eval_number_3_2 start!!")
 
         user_id_list = []
         user_answer_list = []
@@ -590,7 +590,7 @@ class Evaluator:
     # Evaluation Number 4_1
     ##############################################################
     def eval_number_4_1(self, df):
-        print(df.head())
+        print("eval_number_4_1 start!!")
 
         user_id_list = []
         user_answer_list = []
@@ -638,7 +638,7 @@ class Evaluator:
     # Evaluation Number 4_2
     ##############################################################
     def eval_number_4_2(self, df):
-        print(df.head())
+        print("eval_number_4_2 start!!")
 
         user_id_list = []
         user_answer_list = []
@@ -687,7 +687,7 @@ class Evaluator:
     # Evaluation Number 5_1
     ##############################################################
     def eval_number_5_1(self, df):
-        print(df.head())
+        print("eval_number_5_1 start!!")
 
         user_id_list = []
         user_answer_list = []
@@ -735,7 +735,7 @@ class Evaluator:
     # Evaluation Number 5_2
     ##############################################################
     def eval_number_5_2(self, df):
-        print(df.head())
+        print("eval_number_5_2 start!!")
 
         user_id_list = []
         user_answer_list = []
