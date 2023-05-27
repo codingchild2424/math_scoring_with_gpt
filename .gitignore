@@ -1,6 +1,6 @@
 .env
 data/
-result/
+results/
 src/preprecessor.ipynb
 
 # Byte-compiled / optimized / DLL files
