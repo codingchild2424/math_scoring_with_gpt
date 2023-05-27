@@ -1,5 +1,10 @@
 
 from modules.gpt_modules import gpt_call
+from langchain import PromptTemplate
+
+import pandas as pd
+
+from tqdm import tqdm
 
 
 class Evaluator:
@@ -232,52 +237,544 @@ class Evaluator:
         ])
 
         ##############################################################
-        # Criteria Prompt
+        # Persona Prompt
         ##############################################################
-
+        self.persona_prompt = "\n".join([
+            "너는 수학 문제를 평가하는 인공지능이다.",
+            "문제와 정답, 평가 기준에 따라 학생들의 답안을 평가한다.",
+            "평가 결과는 점수와 이유로 나타낸다.",
+            "점수는 숫자로 쓴다. 예) 점수: 3",
+            "이유는 문장으로 쓴다. 예) 이유: 문제를 잘 읽지 않았다.",
+        ])
 
 
     ##############################################################
-    # Evaluation Number 1
+    # Evaluation Number 1_1
     ##############################################################
-    def eval_number_1(self, df):
+    def eval_number_1_1(self, df):
         print(df.head())
 
         user_id_list = []
         user_answer_list = []
-        score_number_1_1_list = []
-        score_number_1_2_list = []
+        # score와 reason이 포함되어 있음
+        bot_response_list = []
 
-        for row in df:
+        for row in tqdm(df.iterrows()):
             user_id = row[1]['user_id']
             user_answer = row[1]['답안']
 
             # prompt setting
             number_1_1_prompt_template = "\n".join([
+                self.persona_prompt,
                 self.number_1_qa_prompt, # question and answer prompt
                 self.number_1_kc_prompt, # knowledge component
                 self.number_1_1_criteria_text, # criteria
+                "답안에 대한 점수와 이유를 작성하라.",
+                "답안: {user_answer}",
+                "점수: ",
+                "이유: ",
             ])
+            prompt_template = PromptTemplate(
+                input_variables=["user_answer"],
+                template=number_1_1_prompt_template,
+            )
+            input_prompt = prompt_template.format(user_answer=user_answer)
 
-            
-            
+            bot_response = gpt_call(input_prompt)
 
-            bot_response = gpt_call()
+            # append
+            user_id_list.append(user_id)
+            user_answer_list.append(user_answer)
+            bot_response_list.append(bot_response)
 
-            score_number_1_1 = bot_response
+        # make dataframe
+        fianl_df = pd.DataFrame({
+            "user_id": user_id_list,
+            "user_answer": user_answer_list,
+            "bot_response": bot_response_list,
+        })
+
+        return fianl_df
+    
+    ##############################################################
+    # Evaluation Number 1_2
+    ##############################################################
+    def eval_number_1_2(self, df):
+        print(df.head())
+
+        user_id_list = []
+        user_answer_list = []
+        # score와 reason이 포함되어 있음
+        bot_response_list = []
+
+        for row in tqdm(df.iterrows()):
+            user_id = row[1]['user_id']
+            user_answer = row[1]['답안']
+
+            # prompt setting
+            number_1_2_prompt_template = "\n".join([
+                self.persona_prompt,
+                self.number_1_qa_prompt, # question and answer prompt
+                self.number_1_kc_prompt, # knowledge component
+                self.number_1_2_criteria_text, # criteria
+                "답안에 대한 점수와 이유를 작성하라.",
+                "답안: {user_answer}",
+                "점수: ",
+                "이유: ",
+            ])
+            prompt_template = PromptTemplate(
+                input_variables=["user_answer"],
+                template=number_1_2_prompt_template,
+            )
+            input_prompt = prompt_template.format(user_answer=user_answer)
+
+            bot_response = gpt_call(input_prompt)
+
+            # append
+            user_id_list.append(user_id)
+            user_answer_list.append(user_answer)
+            bot_response_list.append(bot_response)
+
+        # make dataframe
+        fianl_df = pd.DataFrame({
+            "user_id": user_id_list,
+            "user_answer": user_answer_list,
+            "bot_response": bot_response_list,
+        })
+
+        return fianl_df
+
+    ##############################################################
+    # Evaluation Number 2_1
+    ##############################################################
+    def eval_number_2_1(self, df):
+        print(df.head())
+
+        user_id_list = []
+        user_answer_list = []
+        # score와 reason이 포함되어 있음
+        bot_response_list = []
+
+        for row in tqdm(df.iterrows()):
+            user_id = row[1]['user_id']
+            user_answer = row[1]['답안']
+
+            # prompt setting
+            number_2_1_prompt_template = "\n".join([
+                self.persona_prompt,
+                self.number_2_qa_prompt, # question and answer prompt
+                self.number_2_kc_prompt, # knowledge component
+                self.number_2_1_criteria_text, # criteria
+                "답안에 대한 점수와 이유를 작성하라.",
+                "답안: {user_answer}",
+                "점수: ",
+                "이유: ",
+            ])
+            prompt_template = PromptTemplate(
+                input_variables=["user_answer"],
+                template=number_2_1_prompt_template,
+            )
+            input_prompt = prompt_template.format(user_answer=user_answer)
+
+            bot_response = gpt_call(input_prompt)
+
+            # append
+            user_id_list.append(user_id)
+            user_answer_list.append(user_answer)
+            bot_response_list.append(bot_response)
+
+        # make dataframe
+        fianl_df = pd.DataFrame({
+            "user_id": user_id_list,
+            "user_answer": user_answer_list,
+            "bot_response": bot_response_list,
+        })
+
+        return fianl_df
+
+    ##############################################################
+    # Evaluation Number 2_2
+    ##############################################################
+    def eval_number_2_2(self, df):
+        print(df.head())
+
+        user_id_list = []
+        user_answer_list = []
+        # score와 reason이 포함되어 있음
+        bot_response_list = []
+
+        for row in tqdm(df.iterrows()):
+            user_id = row[1]['user_id']
+            user_answer = row[1]['답안']
+
+            # prompt setting
+            number_2_2_prompt_template = "\n".join([
+                self.persona_prompt,
+                self.number_2_qa_prompt, # question and answer prompt
+                self.number_2_kc_prompt, # knowledge component
+                self.number_2_2_criteria_text, # criteria
+                "답안에 대한 점수와 이유를 작성하라.",
+                "답안: {user_answer}",
+                "점수: ",
+                "이유: ",
+            ])
+            prompt_template = PromptTemplate(
+                input_variables=["user_answer"],
+                template=number_2_2_prompt_template,
+            )
+            input_prompt = prompt_template.format(user_answer=user_answer)
+
+            bot_response = gpt_call(input_prompt)
+
+            # append
+            user_id_list.append(user_id)
+            user_answer_list.append(user_answer)
+            bot_response_list.append(bot_response)
+
+        # make dataframe
+        fianl_df = pd.DataFrame({
+            "user_id": user_id_list,
+            "user_answer": user_answer_list,
+            "bot_response": bot_response_list,
+        })
+
+        return fianl_df
+    
+    ##############################################################
+    # Evaluation Number 2_3
+    ##############################################################
+    def eval_number_2_3(self, df):
+        print(df.head())
+
+        user_id_list = []
+        user_answer_list = []
+        # score와 reason이 포함되어 있음
+        bot_response_list = []
+
+        for row in tqdm(df.iterrows()):
+            user_id = row[1]['user_id']
+            user_answer = row[1]['답안']
+
+            # prompt setting
+            number_2_3_prompt_template = "\n".join([
+                self.persona_prompt,
+                self.number_2_qa_prompt, # question and answer prompt
+                self.number_2_kc_prompt, # knowledge component
+                self.number_2_3_criteria_text, # criteria
+                "답안에 대한 점수와 이유를 작성하라.",
+                "답안: {user_answer}",
+                "점수: ",
+                "이유: ",
+            ])
+            prompt_template = PromptTemplate(
+                input_variables=["user_answer"],
+                template=number_2_3_prompt_template,
+            )
+            input_prompt = prompt_template.format(user_answer=user_answer)
+
+            bot_response = gpt_call(input_prompt)
+
+            # append
+            user_id_list.append(user_id)
+            user_answer_list.append(user_answer)
+            bot_response_list.append(bot_response)
+
+        # make dataframe
+        fianl_df = pd.DataFrame({
+            "user_id": user_id_list,
+            "user_answer": user_answer_list,
+            "bot_response": bot_response_list,
+        })
+
+        return fianl_df
 
 
-    def eval_number_2(self, df):
-        pass
+    ##############################################################
+    # Evaluation Number 3_1
+    ##############################################################
+    def eval_number_3_1(self, df):
+        print(df.head())
+
+        user_id_list = []
+        user_answer_list = []
+        # score와 reason이 포함되어 있음
+        bot_response_list = []
+
+        for row in tqdm(df.iterrows()):
+            user_id = row[1]['user_id']
+            user_answer = row[1]['답안']
+
+            # prompt setting
+            number_3_1_prompt_template = "\n".join([
+                self.persona_prompt,
+                self.number_3_qa_prompt, # question and answer prompt
+                self.number_3_kc_prompt, # knowledge component
+                self.number_3_1_criteria_text, # criteria
+                "답안에 대한 점수와 이유를 작성하라.",
+                "답안: {user_answer}",
+                "점수: ",
+                "이유: ",
+            ])
+            prompt_template = PromptTemplate(
+                input_variables=["user_answer"],
+                template=number_3_1_prompt_template,
+            )
+            input_prompt = prompt_template.format(user_answer=user_answer)
+
+            bot_response = gpt_call(input_prompt)
+
+            # append
+            user_id_list.append(user_id)
+            user_answer_list.append(user_answer)
+            bot_response_list.append(bot_response)
+
+        # make dataframe
+        fianl_df = pd.DataFrame({
+            "user_id": user_id_list,
+            "user_answer": user_answer_list,
+            "bot_response": bot_response_list,
+        })
+
+        return fianl_df
+
+    ##############################################################
+    # Evaluation Number 3_2
+    ##############################################################
+    def eval_number_3_2(self, df):
+        print(df.head())
+
+        user_id_list = []
+        user_answer_list = []
+        # score와 reason이 포함되어 있음
+        bot_response_list = []
+
+        for row in tqdm(df.iterrows()):
+            user_id = row[1]['user_id']
+            user_answer = row[1]['답안']
+
+            # prompt setting
+            number_3_2_prompt_template = "\n".join([
+                self.persona_prompt,
+                self.number_3_qa_prompt, # question and answer prompt
+                self.number_3_kc_prompt, # knowledge component
+                self.number_3_2_criteria_text, # criteria
+                "답안에 대한 점수와 이유를 작성하라.",
+                "답안: {user_answer}",
+                "점수: ",
+                "이유: ",
+            ])
+            prompt_template = PromptTemplate(
+                input_variables=["user_answer"],
+                template=number_3_2_prompt_template,
+            )
+            input_prompt = prompt_template.format(user_answer=user_answer)
+
+            bot_response = gpt_call(input_prompt)
+
+            # append
+            user_id_list.append(user_id)
+            user_answer_list.append(user_answer)
+            bot_response_list.append(bot_response)
+
+        # make dataframe
+        fianl_df = pd.DataFrame({
+            "user_id": user_id_list,
+            "user_answer": user_answer_list,
+            "bot_response": bot_response_list,
+        })
+
+        return fianl_df
 
 
-    def eval_number_3(self, df):
-        pass
+    ##############################################################
+    # Evaluation Number 4_1
+    ##############################################################
+    def eval_number_4_1(self, df):
+        print(df.head())
+
+        user_id_list = []
+        user_answer_list = []
+        # score와 reason이 포함되어 있음
+        bot_response_list = []
+
+        for row in tqdm(df.iterrows()):
+            user_id = row[1]['user_id']
+            user_answer = row[1]['답안']
+
+            # prompt setting
+            number_4_1_prompt_template = "\n".join([
+                self.persona_prompt,
+                self.number_4_qa_prompt, # question and answer prompt
+                self.number_4_kc_prompt, # knowledge component
+                self.number_4_1_criteria_text, # criteria
+                "답안에 대한 점수와 이유를 작성하라.",
+                "답안: {user_answer}",
+                "점수: ",
+                "이유: ",
+            ])
+            prompt_template = PromptTemplate(
+                input_variables=["user_answer"],
+                template=number_4_1_prompt_template,
+            )
+            input_prompt = prompt_template.format(user_answer=user_answer)
+
+            bot_response = gpt_call(input_prompt)
+
+            # append
+            user_id_list.append(user_id)
+            user_answer_list.append(user_answer)
+            bot_response_list.append(bot_response)
+
+        # make dataframe
+        fianl_df = pd.DataFrame({
+            "user_id": user_id_list,
+            "user_answer": user_answer_list,
+            "bot_response": bot_response_list,
+        })
+
+        return fianl_df
+
+    ##############################################################
+    # Evaluation Number 4_2
+    ##############################################################
+    def eval_number_4_2(self, df):
+        print(df.head())
+
+        user_id_list = []
+        user_answer_list = []
+        # score와 reason이 포함되어 있음
+        bot_response_list = []
+
+        for row in tqdm(df.iterrows()):
+            user_id = row[1]['user_id']
+            user_answer = row[1]['답안']
+
+            # prompt setting
+            number_4_2_prompt_template = "\n".join([
+                self.persona_prompt,
+                self.number_4_qa_prompt, # question and answer prompt
+                self.number_4_kc_prompt, # knowledge component
+                self.number_4_2_criteria_text, # criteria
+                "답안에 대한 점수와 이유를 작성하라.",
+                "답안: {user_answer}",
+                "점수: ",
+                "이유: ",
+            ])
+            prompt_template = PromptTemplate(
+                input_variables=["user_answer"],
+                template=number_4_2_prompt_template,
+            )
+            input_prompt = prompt_template.format(user_answer=user_answer)
+
+            bot_response = gpt_call(input_prompt)
+
+            # append
+            user_id_list.append(user_id)
+            user_answer_list.append(user_answer)
+            bot_response_list.append(bot_response)
+
+        # make dataframe
+        fianl_df = pd.DataFrame({
+            "user_id": user_id_list,
+            "user_answer": user_answer_list,
+            "bot_response": bot_response_list,
+        })
+
+        return fianl_df
 
 
-    def eval_number_4(self, df):
-        pass
+    ##############################################################
+    # Evaluation Number 5_1
+    ##############################################################
+    def eval_number_5_1(self, df):
+        print(df.head())
 
+        user_id_list = []
+        user_answer_list = []
+        # score와 reason이 포함되어 있음
+        bot_response_list = []
 
-    def eval_number_5(self, df):
-        pass
+        for row in tqdm(df.iterrows()):
+            user_id = row[1]['user_id']
+            user_answer = row[1]['답안']
+
+            # prompt setting
+            number_5_1_prompt_template = "\n".join([
+                self.persona_prompt,
+                self.number_5_qa_prompt, # question and answer prompt
+                self.number_5_kc_prompt, # knowledge component
+                self.number_5_1_criteria_text, # criteria
+                "답안에 대한 점수와 이유를 작성하라.",
+                "답안: {user_answer}",
+                "점수: ",
+                "이유: ",
+            ])
+            prompt_template = PromptTemplate(
+                input_variables=["user_answer"],
+                template=number_5_1_prompt_template,
+            )
+            input_prompt = prompt_template.format(user_answer=user_answer)
+
+            bot_response = gpt_call(input_prompt)
+
+            # append
+            user_id_list.append(user_id)
+            user_answer_list.append(user_answer)
+            bot_response_list.append(bot_response)
+
+        # make dataframe
+        fianl_df = pd.DataFrame({
+            "user_id": user_id_list,
+            "user_answer": user_answer_list,
+            "bot_response": bot_response_list,
+        })
+
+        return fianl_df
+    
+    ##############################################################
+    # Evaluation Number 5_2
+    ##############################################################
+    def eval_number_5_2(self, df):
+        print(df.head())
+
+        user_id_list = []
+        user_answer_list = []
+        # score와 reason이 포함되어 있음
+        bot_response_list = []
+
+        for row in tqdm(df.iterrows()):
+            user_id = row[1]['user_id']
+            user_answer = row[1]['답안']
+
+            # prompt setting
+            number_5_2_prompt_template = "\n".join([
+                self.persona_prompt,
+                self.number_5_qa_prompt, # question and answer prompt
+                self.number_5_kc_prompt, # knowledge component
+                self.number_5_2_criteria_text, # criteria
+                "답안에 대한 점수와 이유를 작성하라.",
+                "답안: {user_answer}",
+                "점수: ",
+                "이유: ",
+            ])
+            prompt_template = PromptTemplate(
+                input_variables=["user_answer"],
+                template=number_5_2_prompt_template,
+            )
+            input_prompt = prompt_template.format(user_answer=user_answer)
+
+            bot_response = gpt_call(input_prompt)
+
+            # append
+            user_id_list.append(user_id)
+            user_answer_list.append(user_answer)
+            bot_response_list.append(bot_response)
+
+        # make dataframe
+        fianl_df = pd.DataFrame({
+            "user_id": user_id_list,
+            "user_answer": user_answer_list,
+            "bot_response": bot_response_list,
+        })
+
+        return fianl_df
