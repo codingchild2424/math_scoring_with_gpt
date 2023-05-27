@@ -523,6 +523,7 @@ class Evaluator:
 
         user_id_list = []
         user_answer_list = []
+        user_picture_answer_list = []
         # score와 reason이 포함되어 있음
         bot_response_list = []
 
@@ -530,6 +531,7 @@ class Evaluator:
             try:
                 user_id = row[1]['user_id']
                 user_answer = row[1]['답안']
+                user_picture_answer = row[1]['텍스트화']
 
                 # prompt setting
                 number_3_1_prompt_template = "\n".join([
@@ -537,16 +539,20 @@ class Evaluator:
                     self.number_3_qa_prompt, # question and answer prompt
                     self.number_3_kc_prompt, # knowledge component
                     self.number_3_1_criteria_text, # criteria
-                    "답안에 대한 점수와 이유를 작성하라.",
+                    "답안과 그림답안을 보고 이에 대한 점수와 이유를 작성하라.",
                     "답안: {user_answer}",
+                    "그림답안: {user_picture_answer}",
                     "점수: ",
                     "이유: ",
                 ])
                 prompt_template = PromptTemplate(
-                    input_variables=["user_answer"],
+                    input_variables=["user_answer", "user_picture_answer"],
                     template=number_3_1_prompt_template,
                 )
-                input_prompt = prompt_template.format(user_answer=user_answer)
+                input_prompt = prompt_template.format(
+                    user_answer=user_answer,
+                    user_picture_answer=user_picture_answer,
+                    )
 
                 bot_response = gpt_call(input_prompt)
 
@@ -555,6 +561,7 @@ class Evaluator:
                 # append
                 user_id_list.append(user_id)
                 user_answer_list.append(user_answer)
+                user_picture_answer_list.append(user_picture_answer)
                 bot_response_list.append(bot_response)
             except:
                 continue
@@ -563,6 +570,7 @@ class Evaluator:
         final_df = pd.DataFrame({
             "user_id": user_id_list,
             "user_answer": user_answer_list,
+            "user_picture_answer": user_picture_answer_list,
             "bot_response": bot_response_list,
         })
 
@@ -576,6 +584,7 @@ class Evaluator:
 
         user_id_list = []
         user_answer_list = []
+        user_picture_answer_list = []
         # score와 reason이 포함되어 있음
         bot_response_list = []
 
@@ -583,6 +592,7 @@ class Evaluator:
             try:
                 user_id = row[1]['user_id']
                 user_answer = row[1]['답안']
+                user_picture_answer = row[1]['텍스트화']
 
                 # prompt setting
                 number_3_2_prompt_template = "\n".join([
@@ -590,16 +600,20 @@ class Evaluator:
                     self.number_3_qa_prompt, # question and answer prompt
                     self.number_3_kc_prompt, # knowledge component
                     self.number_3_2_criteria_text, # criteria
-                    "답안에 대한 점수와 이유를 작성하라.",
+                    "답안과 그림답안을 보고 이에 대한 점수와 이유를 작성하라.",
                     "답안: {user_answer}",
+                    "그림답안: {user_picture_answer}",
                     "점수: ",
                     "이유: ",
                 ])
                 prompt_template = PromptTemplate(
-                    input_variables=["user_answer"],
+                    input_variables=["user_answer", "user_picture_answer"],
                     template=number_3_2_prompt_template,
                 )
-                input_prompt = prompt_template.format(user_answer=user_answer)
+                input_prompt = prompt_template.format(
+                    user_answer=user_answer,
+                    user_picture_answer=user_picture_answer,
+                    )
 
                 bot_response = gpt_call(input_prompt)
 
@@ -608,6 +622,7 @@ class Evaluator:
                 # append
                 user_id_list.append(user_id)
                 user_answer_list.append(user_answer)
+                user_picture_answer_list.append(user_picture_answer)
                 bot_response_list.append(bot_response)
             except:
                 continue
@@ -616,6 +631,7 @@ class Evaluator:
         final_df = pd.DataFrame({
             "user_id": user_id_list,
             "user_answer": user_answer_list,
+            "user_picture_answer": user_picture_answer_list,
             "bot_response": bot_response_list,
         })
 
@@ -630,6 +646,7 @@ class Evaluator:
 
         user_id_list = []
         user_answer_list = []
+        user_picture_answer_list = []
         # score와 reason이 포함되어 있음
         bot_response_list = []
 
@@ -637,6 +654,7 @@ class Evaluator:
             try:
                 user_id = row[1]['user_id']
                 user_answer = row[1]['답안']
+                user_picture_answer = row[1]['텍스트화']
 
                 # prompt setting
                 number_4_1_prompt_template = "\n".join([
@@ -644,16 +662,20 @@ class Evaluator:
                     self.number_4_qa_prompt, # question and answer prompt
                     self.number_4_kc_prompt, # knowledge component
                     self.number_4_1_criteria_text, # criteria
-                    "답안에 대한 점수와 이유를 작성하라.",
+                    "답안과 그림답안을 보고 이에 대한 점수와 이유를 작성하라.",
                     "답안: {user_answer}",
+                    "그림답안: {user_picture_answer}",
                     "점수: ",
                     "이유: ",
                 ])
                 prompt_template = PromptTemplate(
-                    input_variables=["user_answer"],
+                    input_variables=["user_answer", "user_picture_answer"],
                     template=number_4_1_prompt_template,
                 )
-                input_prompt = prompt_template.format(user_answer=user_answer)
+                input_prompt = prompt_template.format(
+                    user_answer=user_answer,
+                    user_picture_answer=user_picture_answer,
+                    )
 
                 bot_response = gpt_call(input_prompt)
 
@@ -662,6 +684,7 @@ class Evaluator:
                 # append
                 user_id_list.append(user_id)
                 user_answer_list.append(user_answer)
+                user_picture_answer_list.append(user_picture_answer)
                 bot_response_list.append(bot_response)
             except:
                 continue
@@ -670,6 +693,7 @@ class Evaluator:
         final_df = pd.DataFrame({
             "user_id": user_id_list,
             "user_answer": user_answer_list,
+            "user_picture_answer": user_picture_answer_list,
             "bot_response": bot_response_list,
         })
 
@@ -683,6 +707,7 @@ class Evaluator:
 
         user_id_list = []
         user_answer_list = []
+        user_picture_answer_list = []
         # score와 reason이 포함되어 있음
         bot_response_list = []
 
@@ -690,6 +715,7 @@ class Evaluator:
             try:
                 user_id = row[1]['user_id']
                 user_answer = row[1]['답안']
+                user_picture_answer = row[1]['텍스트화']
 
                 # prompt setting
                 number_4_2_prompt_template = "\n".join([
@@ -697,16 +723,20 @@ class Evaluator:
                     self.number_4_qa_prompt, # question and answer prompt
                     self.number_4_kc_prompt, # knowledge component
                     self.number_4_2_criteria_text, # criteria
-                    "답안에 대한 점수와 이유를 작성하라.",
+                    "답안과 그림답안을 보고 이에 대한 점수와 이유를 작성하라.",
                     "답안: {user_answer}",
+                    "그림답안: {user_picture_answer}",
                     "점수: ",
                     "이유: ",
                 ])
                 prompt_template = PromptTemplate(
-                    input_variables=["user_answer"],
+                    input_variables=["user_answer", "user_picture_answer"],
                     template=number_4_2_prompt_template,
                 )
-                input_prompt = prompt_template.format(user_answer=user_answer)
+                input_prompt = prompt_template.format(
+                    user_answer=user_answer,
+                    user_picture_answer=user_picture_answer,
+                    )
 
                 bot_response = gpt_call(input_prompt)
 
@@ -715,6 +745,7 @@ class Evaluator:
                 # append
                 user_id_list.append(user_id)
                 user_answer_list.append(user_answer)
+                user_picture_answer_list.append(user_picture_answer)
                 bot_response_list.append(bot_response)
             except:
                 continue
@@ -723,6 +754,7 @@ class Evaluator:
         final_df = pd.DataFrame({
             "user_id": user_id_list,
             "user_answer": user_answer_list,
+            "user_picture_answer": user_picture_answer_list,
             "bot_response": bot_response_list,
         })
 
@@ -737,6 +769,7 @@ class Evaluator:
 
         user_id_list = []
         user_answer_list = []
+        user_picture_answer_list = []
         # score와 reason이 포함되어 있음
         bot_response_list = []
 
@@ -744,6 +777,7 @@ class Evaluator:
             try:
                 user_id = row[1]['user_id']
                 user_answer = row[1]['답안']
+                user_picture_answer = row[1]['텍스트화']
 
                 # prompt setting
                 number_5_1_prompt_template = "\n".join([
@@ -751,16 +785,20 @@ class Evaluator:
                     self.number_5_qa_prompt, # question and answer prompt
                     self.number_5_kc_prompt, # knowledge component
                     self.number_5_1_criteria_text, # criteria
-                    "답안에 대한 점수와 이유를 작성하라.",
+                    "답안과 그림답안을 보고 이에 대한 점수와 이유를 작성하라.",
                     "답안: {user_answer}",
+                    "그림답안: {user_picture_answer}",
                     "점수: ",
                     "이유: ",
                 ])
                 prompt_template = PromptTemplate(
-                    input_variables=["user_answer"],
+                    input_variables=["user_answer", "user_picture_answer"],
                     template=number_5_1_prompt_template,
                 )
-                input_prompt = prompt_template.format(user_answer=user_answer)
+                input_prompt = prompt_template.format(
+                    user_answer=user_answer,
+                    user_picture_answer=user_picture_answer,
+                    )
 
                 bot_response = gpt_call(input_prompt)
 
@@ -769,6 +807,7 @@ class Evaluator:
                 # append
                 user_id_list.append(user_id)
                 user_answer_list.append(user_answer)
+                user_picture_answer_list.append(user_picture_answer)
                 bot_response_list.append(bot_response)
             except:
                 continue
@@ -777,6 +816,7 @@ class Evaluator:
         final_df = pd.DataFrame({
             "user_id": user_id_list,
             "user_answer": user_answer_list,
+            "user_picture_answer": user_picture_answer_list,
             "bot_response": bot_response_list,
         })
 
@@ -790,6 +830,7 @@ class Evaluator:
 
         user_id_list = []
         user_answer_list = []
+        user_picture_answer_list = []
         # score와 reason이 포함되어 있음
         bot_response_list = []
 
@@ -797,6 +838,7 @@ class Evaluator:
             try:
                 user_id = row[1]['user_id']
                 user_answer = row[1]['답안']
+                user_picture_answer = row[1]['텍스트화']
 
                 # prompt setting
                 number_5_2_prompt_template = "\n".join([
@@ -804,16 +846,20 @@ class Evaluator:
                     self.number_5_qa_prompt, # question and answer prompt
                     self.number_5_kc_prompt, # knowledge component
                     self.number_5_2_criteria_text, # criteria
-                    "답안에 대한 점수와 이유를 작성하라.",
+                    "답안과 그림답안을 보고 이에 대한 점수와 이유를 작성하라.",
                     "답안: {user_answer}",
+                    "그림답안: {user_picture_answer}",
                     "점수: ",
                     "이유: ",
                 ])
                 prompt_template = PromptTemplate(
-                    input_variables=["user_answer"],
+                    input_variables=["user_answer", "user_picture_answer"],
                     template=number_5_2_prompt_template,
                 )
-                input_prompt = prompt_template.format(user_answer=user_answer)
+                input_prompt = prompt_template.format(
+                    user_answer=user_answer,
+                    user_picture_answer=user_picture_answer
+                    )
 
                 bot_response = gpt_call(input_prompt)
 
@@ -822,6 +868,7 @@ class Evaluator:
                 # append
                 user_id_list.append(user_id)
                 user_answer_list.append(user_answer)
+                user_picture_answer_list.append(user_picture_answer)
                 bot_response_list.append(bot_response)
             except:
                 continue
@@ -830,6 +877,7 @@ class Evaluator:
         final_df = pd.DataFrame({
             "user_id": user_id_list,
             "user_answer": user_answer_list,
+            "user_picture_answer": user_picture_answer_list,
             "bot_response": bot_response_list,
         })
 
