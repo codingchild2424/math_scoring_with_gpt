@@ -23,13 +23,25 @@ class Evaluator:
             "평행한 변이 한 쌍이라도 있는 사각형",
         ])
 
-        self.number_2_qa_prompt = "\n".join([
+        self.number_2_1_qa_prompt = "\n".join([
             "문제: ",
             "사다리꼴  넓이를  구하는데  필요한  선분  3개를  찾아  기호(예:  선분  ㅈㅊ)를  모두  적고 해당 선분의 이름을 적어보세요. (길이는 모눈종이 칸을 이용하여 구하시오.)",
             "답안: ",
-            "선분 ㄱㄹ, 윗변, 6",
-            "선분 ㄴㄷ, 아랫변, 14",
-            "선분 ㄱㅁ,	높이, 6"
+            "선분 ㄱㄹ, 선분 ㄴㄷ, 선분 ㄱㅁ"
+        ])
+
+        self.number_2_2_qa_prompt = "\n".join([
+            "문제: ",
+            "사다리꼴  넓이를  구하는데  필요한  선분  3개를  찾아  기호(예:  선분  ㅈㅊ)를  모두  적고 해당 선분의 이름을 적어보세요. (길이는 모눈종이 칸을 이용하여 구하시오.)",
+            "답안: ",
+            "윗변, 아랫변, 높이"
+        ])
+
+        self.number_2_3_qa_prompt = "\n".join([
+            "문제: ",
+            "사다리꼴  넓이를  구하는데  필요한  선분  3개를  찾아  기호(예:  선분  ㅈㅊ)를  모두  적고 해당 선분의 이름을 적어보세요. (길이는 모눈종이 칸을 이용하여 구하시오.)",
+            "답안: ",
+            "6, 14, 6"
         ])
 
         self.number_3_qa_prompt = "\n".join([
@@ -369,12 +381,12 @@ class Evaluator:
         for row in tqdm(df.iterrows()):
             try:
                 user_id = row[1]['user_id']
-                user_answer = row[1]['답안']
+                user_answer = row[1]['답안1']
 
                 # prompt setting
                 number_2_1_prompt_template = "\n".join([
                     self.persona_prompt,
-                    self.number_2_qa_prompt, # question and answer prompt
+                    self.number_2_1_qa_prompt, # question and answer prompt
                     self.number_2_kc_prompt, # knowledge component
                     self.number_2_1_criteria_text, # criteria
                     "답안에 대한 점수와 이유를 작성하라.",
@@ -422,12 +434,12 @@ class Evaluator:
         for row in tqdm(df.iterrows()):
             try:
                 user_id = row[1]['user_id']
-                user_answer = row[1]['답안']
+                user_answer = row[1]['답안2']
 
                 # prompt setting
                 number_2_2_prompt_template = "\n".join([
                     self.persona_prompt,
-                    self.number_2_qa_prompt, # question and answer prompt
+                    self.number_2_2_qa_prompt, # question and answer prompt
                     self.number_2_kc_prompt, # knowledge component
                     self.number_2_2_criteria_text, # criteria
                     "답안에 대한 점수와 이유를 작성하라.",
@@ -475,12 +487,12 @@ class Evaluator:
         for row in tqdm(df.iterrows()):
             try:
                 user_id = row[1]['user_id']
-                user_answer = row[1]['답안']
+                user_answer = row[1]['답안3']
 
                 # prompt setting
                 number_2_3_prompt_template = "\n".join([
                     self.persona_prompt,
-                    self.number_2_qa_prompt, # question and answer prompt
+                    self.number_2_3_qa_prompt, # question and answer prompt
                     self.number_2_kc_prompt, # knowledge component
                     self.number_2_3_criteria_text, # criteria
                     "답안에 대한 점수와 이유를 작성하라.",

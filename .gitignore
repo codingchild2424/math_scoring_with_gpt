@@ -2,6 +2,7 @@
 data/
 results/
 src/preprecessor.ipynb
+post_results/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
