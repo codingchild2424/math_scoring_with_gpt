@@ -22,6 +22,6 @@ mkdir results
 ### How to start?
 - Use ./main.sh
 ```
-chmod +x .main.sh
+chmod +x main.sh
 ./main.sh
 ```
