@@ -12,7 +12,7 @@ pip install -r requirements.txt
 - You need to make folders in the root; data, result
 ```
 mkdir data
-mkdir result
+mkdir results
 ```
 
 ### Key Setting
@@ -22,6 +22,6 @@ mkdir result
 ### How to start?
 - Use ./main.sh
 ```
-chmod +x .main.sh
+chmod +x main.sh
 ./main.sh
 ```
