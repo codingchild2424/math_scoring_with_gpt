@@ -68,43 +68,50 @@ def main(cfg):
         #     eval_number_1_2_df = evaluator.eval_number_1_2(df=df)
         #     eval_number_1_2_df_file_name = file_name.replace(".tsv", "_2_eval.tsv")
         #     save_result(eval_number_1_2_df, eval_number_1_2_df_file_name)
+        if file_name == "number_1.tsv":
+            continue
 
-        if file_name == "number_2.tsv":
-            eval_number_2_1_df = evaluator.eval_number_2_1(df=df)
-            eval_number_2_1_df_file_name = file_name.replace(".tsv", "_1_eval.tsv")
-            save_result(eval_number_2_1_df, eval_number_2_1_df_file_name)
+        elif file_name == "number_2.tsv":
+            continue
+            # eval_number_2_1_df = evaluator.eval_number_2_1(df=df)
+            # eval_number_2_1_df_file_name = file_name.replace(".tsv", "_1_eval.tsv")
+            # save_result(eval_number_2_1_df, eval_number_2_1_df_file_name)
 
-            eval_number_2_2_df = evaluator.eval_number_2_2(df=df)
-            eval_number_2_2_df_file_name = file_name.replace(".tsv", "_2_eval.tsv")
-            save_result(eval_number_2_2_df, eval_number_2_2_df_file_name)
+            # eval_number_2_2_df = evaluator.eval_number_2_2(df=df)
+            # eval_number_2_2_df_file_name = file_name.replace(".tsv", "_2_eval.tsv")
+            # save_result(eval_number_2_2_df, eval_number_2_2_df_file_name)
 
-            eval_number_2_3_df = evaluator.eval_number_2_3(df=df)
-            eval_number_2_3_df_file_name = file_name.replace(".tsv", "_3_eval.tsv")
-            save_result(eval_number_2_3_df, eval_number_2_3_df_file_name)
+            # eval_number_2_3_df = evaluator.eval_number_2_3(df=df)
+            # eval_number_2_3_df_file_name = file_name.replace(".tsv", "_3_eval.tsv")
+            # save_result(eval_number_2_3_df, eval_number_2_3_df_file_name)
 
         elif file_name == "number_3.tsv":
-            eval_number_3_1_df = evaluator.eval_number_3_1(df=df)
-            eval_number_3_1_df_file_name = file_name.replace(".tsv", "_1_eval.tsv")
-            save_result(eval_number_3_1_df, eval_number_3_1_df_file_name)
 
-            eval_number_3_2_df = evaluator.eval_number_3_2(df=df)
-            eval_number_3_2_df_file_name = file_name.replace(".tsv", "_2_eval.tsv")
-            save_result(eval_number_3_2_df, eval_number_3_2_df_file_name)
+            continue
+            # eval_number_3_1_df = evaluator.eval_number_3_1(df=df)
+            # eval_number_3_1_df_file_name = file_name.replace(".tsv", "_1_eval.tsv")
+            # save_result(eval_number_3_1_df, eval_number_3_1_df_file_name)
+
+            # eval_number_3_2_df = evaluator.eval_number_3_2(df=df)
+            # eval_number_3_2_df_file_name = file_name.replace(".tsv", "_2_eval.tsv")
+            # save_result(eval_number_3_2_df, eval_number_3_2_df_file_name)
 
         elif file_name == "number_4.tsv":
-            eval_number_4_1_df = evaluator.eval_number_4_1(df=df)
-            eval_number_4_1_df_file_name = file_name.replace(".tsv", "_1_eval.tsv")
-            save_result(eval_number_4_1_df, eval_number_4_1_df_file_name)
 
-            eval_number_4_2_df = evaluator.eval_number_4_2(df=df)
-            eval_number_4_2_df_file_name = file_name.replace(".tsv", "_2_eval.tsv")
-            save_result(eval_number_4_2_df, eval_number_4_2_df_file_name)
+            continue
+            # eval_number_4_1_df = evaluator.eval_number_4_1(df=df)
+            # eval_number_4_1_df_file_name = file_name.replace(".tsv", "_1_eval.tsv")
+            # save_result(eval_number_4_1_df, eval_number_4_1_df_file_name)
+
+            # eval_number_4_2_df = evaluator.eval_number_4_2(df=df)
+            # eval_number_4_2_df_file_name = file_name.replace(".tsv", "_2_eval.tsv")
+            # save_result(eval_number_4_2_df, eval_number_4_2_df_file_name)
 
         elif file_name == "number_5.tsv":
             eval_number_5_1_df = evaluator.eval_number_5_1(df=df)
             eval_number_5_1_df_file_name = file_name.replace(".tsv", "_1_eval.tsv")
             save_result(eval_number_5_1_df, eval_number_5_1_df_file_name)
-
+            #continue
             eval_number_5_2_df = evaluator.eval_number_5_2(df=df)
             eval_number_5_2_df_file_name = file_name.replace(".tsv", "_2_eval.tsv")
             save_result(eval_number_5_2_df, eval_number_5_2_df_file_name)

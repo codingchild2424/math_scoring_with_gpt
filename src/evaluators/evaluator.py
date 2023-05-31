@@ -668,6 +668,13 @@ class Evaluator:
                 user_answer = row[1]['답안']
                 user_picture_answer = row[1]['텍스트화']
 
+                # print("user_id: ", user_id)
+                # print("user_answer: ", user_answer)
+                # print("user_picture_answer: ", user_picture_answer)
+
+                user_answer_template = "답안: " + user_answer
+                user_picture_answer_template = "그림답안: " + user_picture_answer
+
                 # prompt setting
                 number_4_1_prompt_template = "\n".join([
                     self.persona_prompt,
@@ -675,19 +682,29 @@ class Evaluator:
                     self.number_4_kc_prompt, # knowledge component
                     self.number_4_1_criteria_text, # criteria
                     "답안과 그림답안을 보고 이에 대한 점수와 이유를 작성하라.",
-                    "답안: {user_answer}",
-                    "그림답안: {user_picture_answer}",
+                    user_answer_template,
+                    user_picture_answer_template,
                     "점수: ",
                     "이유: ",
                 ])
-                prompt_template = PromptTemplate(
-                    input_variables=["user_answer", "user_picture_answer"],
-                    template=number_4_1_prompt_template,
-                )
-                input_prompt = prompt_template.format(
-                    user_answer=user_answer,
-                    user_picture_answer=user_picture_answer,
-                    )
+
+                #print("number_4_1_prompt_template: ", number_4_1_prompt_template)
+
+                # prompt_template = PromptTemplate(
+                #     input_variables=["user_answer", "user_picture_answer"],
+                #     template=number_4_1_prompt_template,
+                # )
+
+                # print("number_4_1_prompt_template: ", number_4_1_prompt_template)
+
+                # input_prompt = prompt_template.format(
+                #     user_answer=user_answer,
+                #     user_picture_answer=user_picture_answer,
+                #     )
+                
+                # print("input_prompt: ", input_prompt)
+
+                input_prompt = number_4_1_prompt_template
 
                 bot_response = gpt_call(input_prompt)
 
@@ -729,6 +746,9 @@ class Evaluator:
                 user_answer = row[1]['답안']
                 user_picture_answer = row[1]['텍스트화']
 
+                user_answer_template = "답안: " + user_answer
+                user_picture_answer_template = "그림답안: " + user_picture_answer
+
                 # prompt setting
                 number_4_2_prompt_template = "\n".join([
                     self.persona_prompt,
@@ -736,19 +756,21 @@ class Evaluator:
                     self.number_4_kc_prompt, # knowledge component
                     self.number_4_2_criteria_text, # criteria
                     "답안과 그림답안을 보고 이에 대한 점수와 이유를 작성하라.",
-                    "답안: {user_answer}",
-                    "그림답안: {user_picture_answer}",
+                    user_answer_template,
+                    user_picture_answer_template,
                     "점수: ",
                     "이유: ",
                 ])
-                prompt_template = PromptTemplate(
-                    input_variables=["user_answer", "user_picture_answer"],
-                    template=number_4_2_prompt_template,
-                )
-                input_prompt = prompt_template.format(
-                    user_answer=user_answer,
-                    user_picture_answer=user_picture_answer,
-                    )
+                # prompt_template = PromptTemplate(
+                #     input_variables=["user_answer", "user_picture_answer"],
+                #     template=number_4_2_prompt_template,
+                # )
+                # input_prompt = prompt_template.format(
+                #     user_answer=user_answer,
+                #     user_picture_answer=user_picture_answer,
+                #     )
+
+                input_prompt = number_4_2_prompt_template
 
                 bot_response = gpt_call(input_prompt)
 
