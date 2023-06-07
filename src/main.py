@@ -71,7 +71,7 @@ def main(cfg):
             continue
 
         elif file_name == "number_2.tsv":
-            #continue
+            continue
             # eval_number_2_1_df = evaluator.eval_number_2_1(df=df)
             # eval_number_2_1_df_file_name = file_name.replace(".tsv", "_1_eval.tsv")
             # save_result(eval_number_2_1_df, eval_number_2_1_df_file_name)
@@ -80,9 +80,9 @@ def main(cfg):
             # eval_number_2_2_df_file_name = file_name.replace(".tsv", "_2_eval.tsv")
             # save_result(eval_number_2_2_df, eval_number_2_2_df_file_name)
 
-            eval_number_2_3_df = evaluator.eval_number_2_3(df=df)
-            eval_number_2_3_df_file_name = file_name.replace(".tsv", "_3_eval.tsv")
-            save_result(eval_number_2_3_df, eval_number_2_3_df_file_name)
+            # eval_number_2_3_df = evaluator.eval_number_2_3(df=df)
+            # eval_number_2_3_df_file_name = file_name.replace(".tsv", "_3_eval.tsv")
+            # save_result(eval_number_2_3_df, eval_number_2_3_df_file_name)
 
         elif file_name == "number_3.tsv":
 

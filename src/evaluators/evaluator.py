@@ -1,5 +1,5 @@
 
-from modules.gpt_modules import gpt_call
+from modules.gpt_modules import gpt_call, gpt_call_tree_of_thought
 from langchain import PromptTemplate
 
 import pandas as pd
@@ -731,25 +731,11 @@ class Evaluator:
                     "이유: ",
                 ])
 
-                #print("number_4_1_prompt_template: ", number_4_1_prompt_template)
-
-                # prompt_template = PromptTemplate(
-                #     input_variables=["user_answer", "user_picture_answer"],
-                #     template=number_4_1_prompt_template,
-                # )
-
-                # print("number_4_1_prompt_template: ", number_4_1_prompt_template)
-
-                # input_prompt = prompt_template.format(
-                #     user_answer=user_answer,
-                #     user_picture_answer=user_picture_answer,
-                #     )
-                
-                # print("input_prompt: ", input_prompt)
-
                 input_prompt = number_4_1_prompt_template
 
-                bot_response = gpt_call(input_prompt)
+                # Tree of Thought
+                bot_response = gpt_call_tree_of_thought(input_prompt)
+                #bot_response = gpt_call(input_prompt)
 
                 print("bot_response: ", bot_response)
 
